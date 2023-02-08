@@ -17,7 +17,7 @@ export default function Comment() {
     }
 
     const addItem = (comment) => {
-        const id = items.length ? items[items.length - 1].id + 1 : 1;
+        const id = items.length ? items.length + 1 : 1;
 
         const getDate = new Date();
         const options = { //задаём формат вывода компонентов даты
@@ -30,7 +30,7 @@ export default function Comment() {
         const date = getDate.toLocaleString("ru", options);
 
         const addedItem = { id: id, text: comment, date: date };
-        items.push(addedItem);
+        items.unshift(addedItem);
         localStorage.setItem('comments', JSON.stringify(items)); //для localStorage: ключ=comments, значение=массив с объектами 
     }
 
@@ -51,7 +51,7 @@ export default function Comment() {
         <section className="comments">
             <h3>Comments</h3>
             <div className="comments-list">
-                {items.map((item) => <div className='new' key={item.id}><div className='date'>{item.date} </div>{item.text}</div>)}
+                {items.map((item) => <div className='new' key={item.id}><div className='date'>{item.date}</div>{item.text}</div>)}
             </div>
             <form className='form' onSubmit={handleSubmit}>
                 <label className='input-label'>Add your comment

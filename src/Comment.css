@@ -8,10 +8,15 @@
 .new {
   border-bottom: 0.5px dotted rgb(0, 0, 0);
   padding: 15px;
+  overflow-wrap: break-word;
 }
 
 .new .form {
   max-width: 500px;
+}
+
+.new:first-child {
+  background-color: rgb(168, 124, 168);
 }
 
 .new:last-child {
